@@ -1,0 +1,116 @@
+import cuarentena.*
+
+describe "cuerantena" {
+
+	// Objetos iniciales
+            	 
+	//Pandemia 
+//		var pandemia = //TODO: construir/obtener una pandemia pandemia en fase 4
+
+    //Trabajos	
+//		var programadore = //TODO: construir/obtener un trabajo normal con base=80000, bono=20000 y fase permitida=3
+//		var docente = // TODO: construir/obtener un trabajo normal con base=15000, bono=2000 y fase permitida=5
+//		var medique = // TODO: construir/obtener un trabajo sanitario con base=60000 y bono=40000
+//		var panadere = // TODO construir/obtener un trabajo esencial con base=30000 y bono=20000
+		
+    //Personas
+//		var milena = //TODO: construir/obtener una persona con trabajos de programadore y docente. Tiene enfermedades preexistentes y edad=25
+//		var nicolas = //TODO: construir/obtener una persona con trabajo panadere, no tiene enfermedadesPreexistentes y edad=17
+//		var mirta = //TODO:  construir/obtener una persona con trabajo medique, not tiene enfermedadesPreexistentes  y edad=67
+		
+    //Familia
+//		var perezGarcia = //TODO construir/obtener una Familia con milena, nicolas y mirta como integrantes
+
+
+
+ 	
+//	test "punto 1.1: ganancia de persona" {
+//		//TODO: verificar que milena gana 115000 
+//		//TODO: verificar que nicolas gana 35000 
+//		//TODO: verificar que mirta gana 75000 
+//	}
+
+  
+
+ 	
+//	test "punto 1.2: ganancia de familia" {
+//		//TODO: verficiar que la familia perezGarcia gana  225000 
+//	}
+
+
+ 
+//	test "punto 1.3: miembros en riesgos" {
+//		//TODO: verificar que la familia perezGarcia NO está aislada 
+//		const familiaDeSoloMirta = //TODO: construir/obtener una Familia con mirta como unica integrante
+//		//TODO: verificar que la familia familiaDeSoloMirta SI está aislada 
+//	}
+
+//	test "punto 1.4: trabajos principales" {
+//		//TODO: verificar que los trabajos principales de la familia perezGarcia sean programadore, panadere y medique
+//	}
+
+ 
+//	test "punto 1.5: trabajadores inactivos" {
+//		//TODO: verificar que no hay integrantes inactivos de la familia perezGarcia 
+//		//TODO: cambiar la pandemia a fase 1 
+//		//TODO verificar que milena es la unica trabajadora inactiva de la familia perezGarcia
+//	}
+
+	
+ 		
+//	test "punto 2.1: puede realizar salida" {
+//		 		
+//		//TODO: verificar que mirta NO puede salir a comprar
+//
+//		//TODO: verificar que nicolas SI puede salir a comprar
+//		//TODO: verificar que nicolas SI puede salir a ejercitarse
+//		//TODO: verificar que nicolas SI puede salir a caminar
+//		//TODO: verificar que nicolas SI puede salir a trabajar
+//		
+//
+//		//TODO: pasar la pandemia a fase 3
+//
+//		//TODO: verificar que nicolas SI puede salir a comprar
+//		//TODO: verificar que nicolas NO puede salir a ejercitarse
+//		//TODO: verificar que nicolas NO puede salir a caminar
+//		//TODO: verificar que nicolas SI puede salir a trabajar
+//		
+//	}
+//
+ 	
+//	test "punto 2.2, 2.3 y 2.4.1: salir a pasear ok " {
+//		//TODO hacer que nicolas salga a comprar
+//		//TODO hacer que nicolas salga a trabajar
+//		//TODO hacer que nicolas salga a comprar 
+//		//TODO verificar que las salidas de nicolas son salirAComprar, salirATrabajar y salirAComprar
+//	}
+
+ 
+//	test "punto 2.2, 2.3 y 2.4.2: salir a pasear no ok" {
+//		//TODO hacer que milena salga a comprar (No se puede!)
+//		//TODO verificar que milena no tenga salidas
+//	}
+	
+
+ 
+//	test "punto 3.1: Salida familiar ok" {
+//
+//		// TODO: hacer que perezGarcia salga a comprar 
+//
+//		//TODO: verificar que nicolas tenga la salida salirAComprar 
+//		//TODO: verificar que mirta no tenga salidas
+//		//TODO: verificar que milena no tenga salidas 
+//	}
+
+ 
+//	test "punto 3.1: Salida familiar no ok" {
+//		var familiaMirtaYMilena = //TODO: obtener/construir una Familia con mirta y milena como integrantes
+//		
+//		//TODO: hacer que la familiaMirtaYMilena salga a comprar (no se puede!)
+//
+//		//TODO: verificar que mirta no tenga salidas
+//		//TODO: verificar que milena no tenga salidas
+//	}
+	
+	
+}
