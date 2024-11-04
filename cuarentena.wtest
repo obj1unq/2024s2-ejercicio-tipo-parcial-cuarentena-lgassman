@@ -5,56 +5,69 @@ describe "cuerantena" {
 	// Objetos iniciales
             	 
 	//Pandemia 
-//		var pandemia = //TODO: construir/obtener una pandemia pandemia en fase 4
+	//	var pandemia = new Pandemia(fase=4)//TODO: construir/obtener una pandemia pandemia en fase 4
 
     //Trabajos	
-//		var programadore = //TODO: construir/obtener un trabajo normal con base=80000, bono=20000 y fase permitida=3
-//		var docente = // TODO: construir/obtener un trabajo normal con base=15000, bono=2000 y fase permitida=5
-//		var medique = // TODO: construir/obtener un trabajo sanitario con base=60000 y bono=40000
-//		var panadere = // TODO construir/obtener un trabajo esencial con base=30000 y bono=20000
+		var programadore = new TrabajoNoEsencial(base=80000, bono=20000, fasePermitida=3)//TODO: construir/obtener un trabajo normal con base=80000, bono=20000 y fase permitida=3
+		var docente = new TrabajoNoEsencial(base=15000, bono=2000, fasePermitida=5)// TODO: construir/obtener un trabajo normal con base=15000, bono=2000 y fase permitida=5
+		var medique = new TrabajoSanitario(base=60000, bono=40000) // TODO: construir/obtener un trabajo sanitario con base=60000 y bono=40000
+		var panadere = new TrabajoEsencial(base=30000, bono=20000) // TODO construir/obtener un trabajo esencial con base=30000 y bono=20000
 		
     //Personas
-//		var milena = //TODO: construir/obtener una persona con trabajos de programadore y docente. Tiene enfermedades preexistentes y edad=25
-//		var nicolas = //TODO: construir/obtener una persona con trabajo panadere, no tiene enfermedadesPreexistentes y edad=17
-//		var mirta = //TODO:  construir/obtener una persona con trabajo medique, not tiene enfermedadesPreexistentes  y edad=67
+		var milena = new Persona(edad=25, enfermedadesPreexistentes=true, trabajos=#{programadore, docente}) //TODO: construir/obtener una persona con trabajos de programadore y docente. Tiene enfermedades preexistentes y edad=25
+		var nicolas = new Persona( edad=17, enfermedadesPreexistentes=false, trabajos=#{panadere})//TODO: construir/obtener una persona con trabajo panadere, no tiene enfermedadesPreexistentes y edad=17
+		var mirta = new Persona(edad=67, enfermedadesPreexistentes=false, trabajos=#{medique}) //TODO:  construir/obtener una persona con trabajo medique, not tiene enfermedadesPreexistentes  y edad=67
 		
     //Familia
-//		var perezGarcia = //TODO construir/obtener una Familia con milena, nicolas y mirta como integrantes
+		var perezGarcia = new Familia(integrantes=#{milena, nicolas, mirta})
 
+    method initialize(){
+        pandemia.fase(4)
+    }
 
 
  	
-//	test "punto 1.1: ganancia de persona" {
-//		//TODO: verificar que milena gana 115000 
-//		//TODO: verificar que nicolas gana 35000 
-//		//TODO: verificar que mirta gana 75000 
-//	}
+	test "punto 1.1: ganancia de persona" {
+		//TODO: verificar que milena gana 115000 
+        assert.equals(115000, milena.ganancias())
+		//TODO: verificar que nicolas gana 35000 
+        assert.equals(35000, nicolas.ganancias())
+		//TODO: verificar que mirta gana 75000 
+        assert.equals(75000, mirta.ganancias())
+	}
 
   
 
  	
-//	test "punto 1.2: ganancia de familia" {
-//		//TODO: verficiar que la familia perezGarcia gana  225000 
-//	}
+	test "punto 1.2: ganancia de familia" {
+		//TODO: verficiar que la familia perezGarcia gana  225000 
+        assert.equals(225000, perezGarcia.ganancias())
+	}
 
 
  
-//	test "punto 1.3: miembros en riesgos" {
-//		//TODO: verificar que la familia perezGarcia NO está aislada 
-//		const familiaDeSoloMirta = //TODO: construir/obtener una Familia con mirta como unica integrante
-//		//TODO: verificar que la familia familiaDeSoloMirta SI está aislada 
-//	}
+	test "punto 1.3: miembros en riesgos" {
+		//TODO: verificar que la familia perezGarcia NO está aislada 
+        assert.notThat(perezGarcia.aislada())
+		
+        const familiaDeSoloMirta = new Familia(integrantes=#{mirta})//TODO: construir/obtener una Familia con mirta como unica integrante
+		assert.that(familiaDeSoloMirta.aislada())
+	}
 
-//	test "punto 1.4: trabajos principales" {
-//		//TODO: verificar que los trabajos principales de la familia perezGarcia sean programadore, panadere y medique
-//	}
+	test "punto 1.4: trabajos principales" {
+		//TODO: verificar que los trabajos principales de la familia perezGarcia sean programadore, panadere y medique
+        assert.equals(#{programadore, panadere, medique}, perezGarcia.trabajosPrincipales())
+	}
 
  
-//	test "punto 1.5: trabajadores inactivos" {
-//		//TODO: verificar que no hay integrantes inactivos de la familia perezGarcia 
-//		//TODO: cambiar la pandemia a fase 1 
-//		//TODO verificar que milena es la unica trabajadora inactiva de la familia perezGarcia
-//	}
+	test "punto 1.5: trabajadores inactivos" {
+		//TODO: verificar que no hay integrantes inactivos de la familia perezGarcia 
+        assert.that(perezGarcia.inactivos().isEmpty())
+		//TODO: cambiar la pandemia a fase 1 
+        pandemia.fase(1)
+		//TODO verificar que milena es la unica trabajadora inactiva de la familia perezGarcia
+        assert.equals(#{milena}, perezGarcia.inactivos())
+	}
 
 	
  		
