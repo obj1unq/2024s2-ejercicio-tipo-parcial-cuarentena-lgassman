@@ -48,6 +48,7 @@ class Persona {
     const edad
     const enfermedadesPreexistentes
     const trabajos
+    const property salidas = []
 
     method ganancias() {
         return trabajos.sum({trabajo => trabajo.salario()})
@@ -73,6 +74,17 @@ class Persona {
     method inactivo() {
         return not self.activo()         
     }
+
+    method salir(salida) {
+        self.validarSalida(salida)
+        salidas.add(salida)
+    }
+    method validarSalida(salida) {
+        if (not salida.puedeHacer(self)){
+            self.error(self.toString() + "No se puede hacer " + salida)
+        }
+    }
+
 }
 
 class Familia {
@@ -94,9 +106,60 @@ class Familia {
         //son aquellos que no puedan realizar ninguno de sus trabajos de manera presencial.
         return integrantes.filter({integrante => integrante.inactivo()})
     }
+    method salir(salida) {
+        self.validarSalir(salida)
+        self.integrantesPara(salida).forEach({persona => persona.salir(salida)})
+    }
+
+    method validarSalir(salida) {
+        if (not self.puedeHacer(salida)) {
+            self.error("No se puede realizar esta salida" + salida)
+        }
+    }
+    method puedeHacer(salida) {
+        return not self.integrantesPara(salida).isEmpty()
+        //return integrantes.any({integrante => salida.puedeHacer(integrante)}) //así es con el any, pero como ya necesitaba el método con el filter lo reutilicé
+    }
+
+    method integrantesPara(salida) {
+        return integrantes.filter({integrante => salida.puedeHacer(integrante)})
+    }
 }
 
 object pandemia {
     var property fase=1
-}		
+}
+
+class Salida {
+
+    method puedeHacer(persona) {
+        return not persona.enRiesgo()
+    }
+}
+class SalidaEjercicio inherits Salida {
+    override method puedeHacer(persona) {
+        return super(persona) and pandemia.fase() > 3
+    }
+}
+
+object salidaComprar inherits  Salida {
+
+}
+
+object salidaEjercicio inherits SalidaEjercicio{
+
+}
+
+object salidaTrabajar inherits Salida {
+    override method puedeHacer(persona) {
+        return super(persona) and persona.activo()
+    }
+}
+
+object salidaCaminar inherits SalidaEjercicio {
+    override method puedeHacer(persona) {
+        return super(persona) or pandemia.fase() == 5
+    }
+}
+
 		
